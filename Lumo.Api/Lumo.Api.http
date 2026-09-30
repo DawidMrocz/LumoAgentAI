@@ -1,0 +1,6 @@
+@Lumo.Api_HostAddress = http://localhost:5201
+
+GET {{Lumo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

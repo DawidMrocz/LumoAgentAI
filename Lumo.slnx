@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+  <Project Path="Integrations/Integrations.csproj" />
+  <Project Path="Lumo.Api/Lumo.Api.csproj" />
+  <Project Path="Lumo.Infrastructure/Lumo.Infrastructure.csproj" />
+</Solution>

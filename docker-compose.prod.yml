@@ -1,0 +1,47 @@
+services:
+  lumo.api:
+    image: ${DOCKERHUB_USERNAME:-your-dockerhub-user}/lumo-api
+    build:
+      context: .
+      dockerfile: Lumo.Api/Dockerfile
+    expose:
+      - "8080"
+    environment:
+      TZ: Europe/Warsaw
+      ASPNETCORE_ENVIRONMENT: Production
+      QDRANT_URL: http://qdrant:6333
+    volumes:
+      - ./Lumo.Api/appsettings.json:/app/appsettings.json:ro
+      - ./Lumo.Api/firebase-service-account.json:/app/firebase-service-account.json:ro
+      - lumo_uploads:/app/App_Data/uploads
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    expose:
+      - "6333"
+      - "6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    depends_on:
+      - lumo.api
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:
+  caddy_data:
+  caddy_config:
+  lumo_uploads:

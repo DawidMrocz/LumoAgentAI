@@ -1,0 +1,314 @@
+.page {
+	padding: 40px;
+	background: var(--color-bg);
+	min-height: 100vh;
+	font-family: Arial;
+}
+
+/* HEADER */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 12px;
+}
+
+.header h1 {
+	font-size: 22px;
+	font-weight: 800;
+	color: var(--text-primary);
+}
+
+.header p {
+	font-size: 13px;
+	color: var(--text-secondary);
+}
+
+.planBadge {
+	background: var(--text-primary);
+	color: var(--text-inverse);
+	padding: 6px 12px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+/* GRID */
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+
+/* CARD */
+.card,
+.cardWide {
+	background: var(--color-surface-translucent);
+	backdrop-filter: blur(14px);
+	border: 1px solid var(--color-border);
+	border-radius: 18px;
+	padding: 18px;
+	transition: 0.15s ease;
+}
+
+.card:hover {
+	box-shadow: 0 12px 30px var(--shadow-color);
+}
+
+.cardWide {
+	grid-column: span 2;
+}
+
+/* PROFILE */
+.profileTop {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.avatar {
+	width: 56px;
+	height: 56px;
+	border-radius: 16px;
+	background: var(--text-primary);
+	color: var(--text-inverse);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.name {
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+.email {
+	font-size: 12px;
+	color: var(--text-secondary);
+}
+
+/* FORM */
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+input {
+	padding: 10px;
+	border-radius: 12px;
+	border: 1px solid var(--color-border);
+	background: var(--color-surface-alt);
+	color: var(--text-primary);
+	outline: none;
+	font-size: 14px;
+}
+
+input:focus {
+	border-color: var(--color-primary);
+}
+
+/* BUTTONS */
+.primaryBtn {
+	background: var(--color-primary);
+	color: #ffffff;
+	border: none;
+	padding: 10px;
+	border-radius: 12px;
+	cursor: pointer;
+	width: 100%;
+}
+
+.primaryBtn:hover {
+	background: var(--color-primary-hover);
+}
+
+.secondaryBtn {
+	background: var(--color-surface-hover);
+	color: var(--text-primary);
+	border: none;
+	padding: 10px;
+	border-radius: 12px;
+	cursor: pointer;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.secondaryBtn:hover {
+	background: var(--color-border);
+}
+
+.dangerBtn {
+	background: var(--color-error);
+	color: #ffffff;
+	border: none;
+	padding: 10px;
+	border-radius: 12px;
+	cursor: pointer;
+	width: 100%;
+}
+
+/* SUBSCRIPTION */
+.subscriptionBox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--color-surface-alt);
+	padding: 12px;
+	border-radius: 14px;
+	margin-bottom: 10px;
+	gap: 12px;
+}
+
+.planTitle {
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+.planDesc {
+	font-size: 12px;
+	color: var(--text-secondary);
+}
+
+.upgradeBtn {
+	background: var(--color-primary-hover);
+	color: #ffffff;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.features {
+	font-size: 13px;
+	color: var(--text-secondary);
+	line-height: 1.6;
+}
+
+/* PAYMENTS */
+.tableHeader {
+	display: grid;
+	grid-template-columns: 1fr 1fr auto;
+	font-size: 12px;
+	color: var(--text-secondary);
+	margin-top: 10px;
+	margin-bottom: 6px;
+}
+
+.table {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 1fr 1fr auto;
+	padding: 10px;
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	background: var(--color-surface);
+	color: var(--text-primary);
+	font-size: 13px;
+	align-items: center;
+}
+
+.badge {
+	padding: 4px 10px;
+	border-radius: 999px;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.paid {
+	background: var(--color-success-bg);
+	color: var(--color-success-text);
+}
+
+.failed {
+	background: var(--color-error-bg);
+	color: var(--color-error-text);
+}
+
+.pending {
+	background: var(--color-warning-bg);
+	color: var(--color-warning-text);
+}
+
+/* =========================
+   📱 RESPONSIVE
+   ========================= */
+
+@media (max-width: 1024px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	.cardWide {
+		grid-column: auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.page {
+		padding: 16px;
+	}
+
+	.header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.planBadge {
+		align-self: flex-start;
+	}
+
+	.subscriptionBox {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.upgradeBtn {
+		width: 100%;
+	}
+
+	.tableHeader {
+		grid-template-columns: 1fr 1fr 1fr;
+		font-size: 11px;
+	}
+
+	.row {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.header h1 {
+		font-size: 18px;
+	}
+
+	.header p {
+		font-size: 12px;
+	}
+
+	.avatar {
+		width: 48px;
+		height: 48px;
+	}
+
+	.row {
+		grid-template-columns: 1fr 1fr;
+		row-gap: 6px;
+	}
+
+	.row div:last-child {
+		grid-column: span 2;
+		justify-self: start;
+	}
+}

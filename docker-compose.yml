@@ -1,0 +1,25 @@
+services:
+  lumo.api:
+    image: ${DOCKER_REGISTRY-}lumoapi
+    build:
+      context: .
+      dockerfile: Lumo.Api/Dockerfile
+    ports:
+      - "32782:8080"
+    environment:
+      - TZ=Europe/Warsaw
+    volumes:
+      - ./Lumo.Api/firebase-service-account.json:/app/firebase-service-account.json:ro
+      - lumo_uploads:/app/App_Data/uploads
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  qdrant_data:
+  lumo_uploads:
